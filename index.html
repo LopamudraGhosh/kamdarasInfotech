@@ -13,481 +13,10 @@
     <!-- Include AOS CSS -->
     <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
 
+    <link rel="stylesheet" href="./css/style.css">
 
+    <title>Kamdars Infotech Solution</title>
 
-    <title>Single Page Application</title>
-    <style>
-        /* General Styles */
-        body {
-            font-family: 'Arial', sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f3f4f6;
-            color: #333;
-        }
-
-        /* Header */
-        header {
-            background-color: #3498DB;
-            color: white;
-            position: fixed;
-            width: 100%;
-            top: 0;
-            left: 0;
-            z-index: 50;
-            padding-left: 10px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-
-        header .container {
-            max-width: 100%;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        header h1 {
-            font-size: 15px;
-            font-weight: bold;
-        }
-
-        header nav {
-            display: flex;
-            padding-right: 20px;
-            gap: 24px;
-            position: relative;
-        }
-
-        header a {
-            color: white;
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-
-        header a:hover {
-            color: #e5e7eb;
-        }
-
-        /* Menu Icon (Hamburger) */
-        .menu-icon {
-            /* Hidden by default */
-            display: none;
-            font-size: 25px;
-            cursor: pointer;
-            margin-right: 20px;
-        }
-
-        .menu-links {
-            display: flex;
-            gap: 24px;
-        }
-
-        /* Links */
-        .menu-links a {
-            display: block;
-        }
-
-        /* Mobile Menu Styles */
-        @media (max-width: 768px) {
-            .menu-icon {
-                /* Show the hamburger icon on smaller screens */
-                display: block;
-            }
-
-            .menu-links {
-                display: none;
-
-                flex-direction: column;
-                gap: 16px;
-                position: fixed;
-                top: 0;
-                left: 0;
-                background-color: #3498DB;
-                padding: 20px;
-                width: 100%;
-                height: 100vh;
-                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-                opacity: 0;
-                transform: translateX(-100%);
-                transition: opacity 0.3s, transform 0.3s;
-            }
-
-            .menu-links.active {
-                display: flex;
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-
-        .menu-links a {
-            font-size: 18px;
-            color: white;
-            text-align: left;
-            padding: 12px 0;
-            width: 100%;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.3);
-        }
-
-        .menu-links a:hover {
-            background-color: rgba(255, 255, 255, 0.2);
-        }
-
-
-
-        /* Hero Section */
-        #Home {
-            position: relative;
-            height: 100vh;
-            /* Full viewport height */
-            background-image: url('https://thumbs.dreamstime.com/b/diversity-creative-designer-team-group-discussion-relax-office-meeting-room-solution-project-lifestyle-171291814.jpg');
-
-            background-size: cover;
-
-            background-position: center;
-
-            display: flex;
-            align-items: center;
-
-            justify-content: center;
-
-            text-align: center;
-
-        }
-
-        /* Semi-transparent background color over the image */
-        .home-container {
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.6);
-            /* Reduce opacity here */
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            color: white;
-        }
-
-        .home-text h2 {
-            font-size: 2rem;
-            margin-bottom: 15px;
-            opacity: 0.9;
-        }
-
-        .home-text p {
-            font-size: 1.5rem;
-            margin-bottom: 20px;
-            opacity: 0.8;
-        }
-
-        .home-button {
-            display: inline-block;
-            padding: 10px 20px;
-            background-color: #F39C12;
-            color: white;
-            text-decoration: none;
-            font-size: 1rem;
-            border-radius: 5px;
-            transition: background-color 0.3s ease, opacity 0.3s ease;
-        }
-
-        .home-button:hover {
-            background-color: #F39C12;
-            opacity: 1;
-        }
-        /*Features About*/
-
-      .AboutUs {
-        background-color: #f9f9f9;
-        padding: 40px 20px;
-
-      }
-
-        /* about Section */
-        .about-us-container {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 20px;
-            max-width: 1200px;
-            margin: 0 auto;
-            flex-wrap: wrap;
-        }
-
-        .about-us-image img {
-            width: 100%;
-            max-width: 400px;
-            border-radius: 8px;
-
-        }
-
-        .about-us-text {
-            flex: 1;
-            padding: 10px;
-            max-width: 600px;
-        }
-
-        .about-us-text h1 {
-            font-size: 2.5rem;
-            margin-bottom: 15px;
-        }
-
-        .about-us-text p {
-            font-size: 1.2rem;
-            line-height: 1.6;
-            color: #555;
-        }
-
-        /* Mobile (tablet or smaller) adjustments */
-        @media (max-width: 768px) {
-            .about-us-container {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .about-us-image {
-                margin-bottom: 5px;
-
-            }
-
-            .about-us-text {
-                text-align: justify;
-            }
-
-            .about-us-text h1 {
-                font-size: 1.8rem;
-            }
-
-            .about-us-text p {
-                font-size: 1rem;
-            }
-        }
-
-
-
-        /* General styles for the section */
-        #OurServices {
-            padding: 50px 20px;
-            background-color: #f8f9fa;
-            text-align: center;
-        }
-
-        .services h1 {
-            font-size: 1.5rem;
-            margin-bottom: 30px;
-            color: #333;
-
-            letter-spacing: 2px;
-        }
-
-        /* Grid container for cards */
-        .card-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            cursor: pointer;
-            gap: 20px;
-            margin-top: 20px;
-        }
-
-        /* Card styles */
-        .card {
-            background-color: white;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            /* Subtle shadow for depth */
-            transition: transform 0.3s, box-shadow 0.3s;
-            text-align: center;
-        }
-
-        .card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
-        }
-
-        .card h3 {
-            font-size: 1.5rem;
-            color: #F39C12;
-            text-align: center;
-            margin-bottom: 10px;
-        }
-
-        .card p {
-            font-size: 1rem;
-            color: #555;
-            line-height: 1.6;
-        }
-
-        /* Responsive design */
-        @media (max-width: 768px) {
-            .card-container {
-                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            }
-
-            .card h3 {
-                font-size: 1.25rem;
-            }
-
-            .card p {
-                font-size: 0.9rem;
-            }
-        }
-
-        /* Section styles */
-        #Services {
-            padding: 50px 20px;
-            background-color: #f9f9f9;
-        }
-
-        .section-title {
-            font-size: 1.5rem;
-            color: #333;
-            text-align: center;
-            margin-bottom: 40px;
-            letter-spacing: 1px;
-        }
-
-        /* Grid layout */
-        .testimonial-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-        }
-
-        /* Testimonial card */
-        .testimonial-card {
-            display: flex;
-            align-items: center;
-            background-color: white;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-
-        .testimonial-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-        }
-
-        /* Image styles */
-        .testimonial-image {
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-            object-fit: cover;
-            margin-right: 15px;
-            border: 3px solid #F39C12;
-        }
-
-        /* Content styles */
-        .testimonial-content {
-            flex: 1;
-        }
-
-        .testimonial-text {
-            font-size: 1rem;
-            color: #555;
-            font-style: italic;
-            margin-bottom: 5px;
-        }
-
-        .name {
-            font-size: 0.9rem;
-            font-weight: bold;
-            color: #F39C12;
-            margin-top: 5px;
-        }
-
-        /* Responsive adjustments */
-        @media (max-width: 768px) {
-            .testimonial-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
-
-
-        /* Contact Section */
-        .contact {
-            padding: 80px 32px;
-            background-color: white;
-            text-align: center;
-        }
-
-        .contact h3 {
-            font-size: 1.5rem;
-            font-weight: 600;
-            margin-bottom: 32px;
-        }
-
-        .contact form {
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        .contact input,
-        .contact textarea {
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 16px;
-            border: 1px solid #d1d5db;
-            border-radius: 8px;
-            font-size: 16px;
-        }
-
-        .contact button {
-            width: 50%;
-            padding: 10px;
-            background-color: #3498DB;
-            color: white;
-            font-size: 16px;
-            font-weight: bold;
-            border-radius: 8px;
-            border: none;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-
-        .contact button:hover {
-            background-color: #1d4ed8;
-        }
-
-        /* Footer */
-        footer {
-            background-color: #1f2937;
-            color: white;
-            padding: 4px;
-            text-align: center;
-            font-size: 14px;
-        }
-
-        #scrollToTopBtn {
-            display: none;
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background-color: #3498DB;
-            color: white;
-            border: none;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            font-size: 24px;
-            cursor: pointer;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            transition: opacity 0.3s ease;
-        }
-
-        #scrollToTopBtn:hover {
-            background-color: #1D4ED8;
-        }
-
-        /* For smooth scroll when button is clicked */
-        html {
-            scroll-behavior: smooth;
-        }
-    </style>
 </head>
 
 <body>
@@ -540,7 +69,12 @@
             <!-- Text Section -->
             <div class="about-us-text">
                 <p data-aos="zoom-in" data-aos-duration="3000">
-                    Kamdars Infotech Solution is a dynamic IT services and solutions provider dedicated to delivering innovative technology solutions. We specialize in web development, mobile app development, UI/UX design, digital marketing, logo design, and post creation. Our mission is to empower businesses with cutting-edge digital tools, ensuring growth, efficiency, and success. At Kamdars Infotech Solution, we prioritize creativity, quality, and customer satisfaction to transform ideas into impactful solutions.
+                    Kamdars Infotech Solution is a dynamic IT services and solutions provider dedicated to delivering
+                    innovative technology solutions. We specialize in web development, mobile app development, UI/UX
+                    design, digital marketing, logo design, and post creation. Our mission is to empower businesses with
+                    cutting-edge digital tools, ensuring growth, efficiency, and success. At Kamdars Infotech Solution,
+                    we prioritize creativity, quality, and customer satisfaction to transform ideas into impactful
+                    solutions.
                 </p>
             </div>
         </div>
@@ -626,72 +160,42 @@
     <!-- Contact Section -->
     <section class="contact" id="ContactUs">
         <h3 data-aos="zoom-in" data-aos-duration="3000">Get In Touch</h3>
-        <form action="#" method="POST">
-            <input type="text" placeholder="Your Name" required>
-            <input type="email" placeholder="Your Email" required>
-            <textarea placeholder="Your Message" required></textarea>
-            <button type="submit">Send Message</button>
-        </form>
+        <div class="contact-container">
+            <div class="map-container">
+                <iframe class="map-frame"
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3705.537036769745!2d72.14159097505295!3d21.759466880079003!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395f5b7b9bab0675%3A0xf4dd15c7dc1700b3!2sMembrane%20Science%20%26%20Membrane%20Separation%20Department%2C%20CSIR-%20CSMCRI!5e0!3m2!1sen!2sin!4v1735665109719!5m2!1sen!2sin"
+                    allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+            <form action="#" method="POST">
+                <input type="text" placeholder="Your Name" required>
+                <input type="email" placeholder="Your Email" required>
+                <textarea placeholder="Your Message" required></textarea>
+                <button type="submit">Send Message</button>
+            </form>
+        </div>
     </section>
+
+
 
     <!-- scroll-behavior button -->
     <button id="scrollToTopBtn" title="Go to top"><i class="fas fa-arrow-up"></i></button>
 
     <!--Footer -->
     <footer>
-        <i class="fa fa-phone">+91 94278 77297</i>
+        <i class="fa fa-phone">&nbsp; +91 94278 77297</i>
         <p>Mon - Fri, 9 AM until 6 PM</p>
-        <i class="fa fa-envelope" > neelkamdar75@gmail.com </i> <br> <br>
-        <i class="fa fa-address-card"> Waghawadi Road Near CSMCRI Bhavnagar ,Gujarat </i>
-        <p>&copy; 2024 Kamdars Infotech Solution || All rights reserved.</p>
-        
+        <i class="fa fa-envelope">&nbsp; neelkamdar75@gmail.com </i> <br> <br>
+        <i class="fa fa-address-card">&nbsp; Waghawadi Road Near CSMCRI Bhavnagar ,Gujarat </i>
+        <p>&copy; 2025 Kamdars Infotech Solution || All rights reserved.</p>
+
     </footer>
 
 
 
     <!-- Include AOS JS -->
     <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
-    <script>
-
-        // for animation
-        AOS.init();
-
-
-        document.getElementById('menu-icon').addEventListener('click', function () {
-            var menu = document.getElementById('menu-links');
-            menu.classList.toggle('active'); // Toggle the menu visibility
-        });
-
-        // Close menu when a link is clicked
-        const menuLinks = document.querySelectorAll('.menu-links a');
-        menuLinks.forEach(function (link) {
-            link.addEventListener('click', function () {
-                var menu = document.getElementById('menu-links');
-                menu.classList.remove('active'); // Close the menu when a link is clicked
-            });
-        });
-
-
-        // Get the button element
-        const scrollToTopBtn = document.getElementById("scrollToTopBtn");
-
-        // Show the button when the user scrolls down 300px from the top of the document
-        window.onscroll = function () {
-            if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
-                scrollToTopBtn.style.display = "block";
-            } else {
-                scrollToTopBtn.style.display = "none";
-            }
-        };
-
-        // Scroll the page to the top when the button is clicked
-        scrollToTopBtn.onclick = function () {
-            document.body.scrollTop = 0; // For Safari
-            document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE, Opera
-        };
-
-
-    </script>
+    
+    <script src="./js/index.js"></script>
 
 </body>
 
